@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Diabetes Prediction</title>
+    <style>
+      * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: medium;
+      }
+      legend {
+        font-size: xx-large;
+      }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        
+        <form action="" method="POST">
+          <fieldset class="p-3">
+            
+            <legend class="text-center text-uppercase">Diabetes Prediction</legend>
+            {% if prediction != -1 %}
+            <div class="flex-container row m-auto justify-content-center">
+              <div class="alert alert-dismissible fade show mt-3 {% if prediction == 1 %} alert-danger {% else %} alert-success {% endif %}" role="alert">
+                {% if prediction == 0 %} 
+                  It is unlikely for the patient to have diabetes!
+                {% else %} 
+                  It is highly likely that the patient already has or will have diabetes!
+                {% endif %}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+            {% endif %}
+          <div class="flex-container row m-auto justify-content-center">
+            <label for="pregs" class="col-md-4 col-sm-12 m-2 p-1">Pregnancies</label>
+            <label for="gluc" class="col-md-4 col-sm-12 m-2 p-1">Glucose Level</label>
+          </div>
+          <div class="flex-container row m-auto justify-content-center">
+            <input type="number" min=0 max=10 class="col-md-4 col-sm-12 m-2 p-1 form-control"  name="pregs" id="" required placeholder="No. of Pregnancies">
+            <input type="number" class="col-md-4 col-sm-12 m-2 p-1 form-control"  name="gluc" id="" required placeholder="Glucose Level (in mg/dL)">
+          </div>
+
+          <div class="flex-container row m-auto justify-content-center">
+            <label for="bp" class="col-md-4 col-sm-12 m-2 p-1">Blood Pressure</label>
+            <label for="skin" class="col-md-4 col-sm-12 m-2 p-1">Skin Thickness</label>
+          </div>
+          <div class="flex-container row m-auto justify-content-center">
+            <input type="number" class="col-md-4 col-sm-12 m-2 p-1 form-control"  name="bp" id="" required placeholder="Blood Pressure (in mm Hg)">
+            <input type="number" class="col-md-4 col-sm-12 m-2 p-1 form-control"  name="skin" id="" required placeholder="Skin Thickness (in mm)">
+          </div>
+          
+          <div class="flex-container row m-auto justify-content-center">
+            <label for="insulin" class="col-md-4 col-sm-12 m-2 p-1">Insulin</label>
+            <label for="bmi" class="col-md-4 col-sm-12 m-2 p-1">BMI</label>
+          </div>
+          <div class="flex-container row m-auto justify-content-center">
+            <input type="number" step=0.1 class="col-md-4 col-sm-12 m-2 p-1 form-control"  name="insulin" id="" required placeholder="Insulin">
+            <input type="number" step=0.1 class="col-md-4 col-sm-12 m-2 p-1 form-control"  name="bmi" id="" required placeholder="BMI">
+          </div>
+
+          <div class="flex-container row m-auto justify-content-center">
+            <label for="func" class="col-md-4 col-sm-12 m-2 p-1">Diabetes Pedigree Function</label>
+            <label for="age" class="col-md-4 col-sm-12 m-2 p-1">Age</label>
+          </div>
+          <div class="flex-container row m-auto justify-content-center">
+            <input type="number" step=0.001 class="col-md-4 col-sm-12 m-2 p-1 form-control"  name="func" id="" required placeholder="Diabetes Pedigree Function">
+            <input type="number" min=21 class="col-md-4 col-sm-12 m-2 p-1 form-control"  name="age" id="" required placeholder="Age (in yrs)">
+          </div>
+
+          <div class="flex-container row justify-content-center m-4">
+            <button type="submit" class="btn btn-primary">Predict</button>
+          </div>
+        </fieldset>
+        </form>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
