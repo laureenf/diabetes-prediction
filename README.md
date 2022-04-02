@@ -1,5 +1,5 @@
 # Diabetes Prediction
-A Flask web app to predict diabetes in a patient using the SVM ML model
+A Flask web app to predict diabetes in a patient using SVM ML model.
 
 ## Table of contents
 * [About](#about)
